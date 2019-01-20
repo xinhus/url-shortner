@@ -9,8 +9,10 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.view.RedirectView;
 
 import url.cases.UrlCases;
+import url.cases.UrlDataCases;
 import url.entity.UrlEntity;
 import url.exception.UrlNotFoundException;
+import url.repository.mysql.UrlDataRepositoryUsingMysql;
 import url.repository.mysql.UrlRepositoryUsingMysql;
 
 @RestController
@@ -19,10 +21,12 @@ public class RedirectController {
 	@RequestMapping(method=RequestMethod.GET, value="/{shortUrl:[a-zA-Z0-9]{6}}")
 	public RedirectView getUrlByShortUrl(@PathVariable("shortUrl") String shortUrl) {
 		UrlCases cases = new UrlCases(new UrlRepositoryUsingMysql());
+		UrlDataCases urlData = new UrlDataCases(new UrlDataRepositoryUsingMysql());
 		try {
 			UrlEntity url = cases.findUrlByShortUrl(shortUrl);
 			RedirectView redirectView = new RedirectView();
-		    redirectView.setUrl(url.getOriginalUrl());
+			redirectView.setUrl(url.getOriginalUrl());
+			urlData.saveData(shortUrl, "access", "new visitor");
 		    return redirectView;
 		} catch (UrlNotFoundException e) {
 			throw new ResponseStatusException(

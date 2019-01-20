@@ -51,7 +51,7 @@ public class UrlCasesTest {
 		UrlEntity entity = saveUrlAndAssertOriginalUrl(originalUrlWithoutHttp);
 		Assert.assertEquals("http://www.mycustomurl.com/", entity.getOriginalUrl());
 	}
-	
+
 	private UrlEntity saveUrlAndAssertOriginalUrl(String originalUrl) {
 		try {
 			UrlEntity entity = cases.shortUrl(originalUrl);
