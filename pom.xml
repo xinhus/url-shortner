@@ -44,7 +44,7 @@
 				<groupId>org.flywaydb</groupId>
 				<artifactId>flyway-maven-plugin</artifactId>
 				<configuration>
-					<url>jdbc:mysql://mysql.ebanx.local:3306/url</url>
+					<url>jdbc:mysql://172.20.0.2:3306/url</url>
 					<user>root</user>
 					<password>password</password>
 				</configuration>
