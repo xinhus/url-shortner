@@ -11,6 +11,7 @@ public class UrlRepositoryInMemory implements UrlRepository {
 
 	List<UrlEntity> repository = new ArrayList<UrlEntity>();
 	
+	@Override
 	public UrlEntity save(UrlEntity entityToBeSaved) throws UnableToSaveUrlException {
 		UrlEntity entity = findUrlByShortUrl(entityToBeSaved.getShortUrl());
 		if (entity == null) {
@@ -20,6 +21,7 @@ public class UrlRepositoryInMemory implements UrlRepository {
 		throw new UnableToSaveUrlException();		
 	}
 
+	@Override
 	public UrlEntity getUrlByShortUrl(String shortUrl) throws UrlNotFoundException {
 		UrlEntity entity = findUrlByShortUrl(shortUrl);
 		if (entity == null) {

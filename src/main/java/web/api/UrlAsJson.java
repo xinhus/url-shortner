@@ -1,6 +1,6 @@
 package web.api;
 
-class Url {
+class UrlAsJson {
 	
 	private String url;
 
