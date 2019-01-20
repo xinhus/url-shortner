@@ -16,3 +16,7 @@ Then navigate to http://localhost:8080/ in your browser.
 - Some tests at `src/test/*`
 - Some CleanArchitechture techniques at package `url.*`
 - Template engine Thymeleaf
+
+
+# POC
+This project is a POC(proof of concept).
