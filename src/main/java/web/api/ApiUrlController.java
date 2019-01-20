@@ -35,7 +35,8 @@ public class ApiUrlController {
 	public UrlEntity getUrlByShortUrl(@PathVariable("shortUrl") String shortUrl) {
 		UrlCases cases = new UrlCases(new UrlRepositoryUsingMysql());
 		try {
-			return cases.findUrlByShortUrl(shortUrl);
+			UrlEntity entity = cases.findUrlByShortUrl(shortUrl);
+			return entity;
 		} catch (UrlNotFoundException e) {
 			throw new ResponseStatusException(
 					HttpStatus.NOT_FOUND,

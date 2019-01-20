@@ -27,6 +27,10 @@ public class UrlCases {
 		}
 		throw new UnableToSaveUrlException();
 	}
+	
+	public UrlEntity findUrlByShortUrl(String shortUrl) throws UrlNotFoundException {
+		return repository.getUrlByShortUrl(shortUrl);
+	}
 
 	private String sanitizeUrl(String originalUrl) {
 		Pattern p = Pattern.compile("https?:\\/\\/");
@@ -50,9 +54,5 @@ public class UrlCases {
 		} catch (UnableToSaveUrlException e) {
 			return false;
 		}
-	}
-	
-	public UrlEntity findUrlByShortUrl(String shortUrl) throws UrlNotFoundException {
-		return repository.getUrlByShortUrl(shortUrl);
 	}
 }
