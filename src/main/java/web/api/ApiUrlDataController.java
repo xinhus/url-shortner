@@ -13,7 +13,7 @@ import url.repository.mysql.UrlDataRepositoryUsingMysql;
 
 @RestController
 @RequestMapping("api/analytics")
-public class AnalyticsController {
+public class ApiUrlDataController {
 	
 	@RequestMapping(method=RequestMethod.GET, value="/{shortUrl}")
 	public List<UrlDataEntity> getUrlByShortUrl(@PathVariable("shortUrl") String shortUrl) {

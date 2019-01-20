@@ -19,7 +19,6 @@
     </div>
   </nav>
 
-  <!-- Page Content -->
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -81,7 +80,9 @@
        		data: JSON.stringify(url),
        		success: function(data) {
        			var shortenUrl = "http://localhost:8080/" + data.shortUrl;
-       			modalBody.html('<a href="' + shortenUrl + '" target="_new">' + shortenUrl + '</a>');
+       			var shortenUrlLink = '<a href="' + shortenUrl + '" target="_new">' + shortenUrl + '</a>';
+       			var analyticsUrl = '<a href="http://localhost:8080/analytics/' + data.shortUrl + '" target="_new">See analytics data</a>';
+       			modalBody.html(shortenUrlLink + '<br/><br/>' + analyticsUrl);
        			originalUrl.val('');
        			$('#shortenUrlModal').modal('show'); 
        		}
