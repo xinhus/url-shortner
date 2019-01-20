@@ -1,0 +1,4 @@
+FROM maven:3-jdk-8
+
+WORKDIR /usr/src/mymaven
+ENTRYPOINT ["/usr/src/mymaven/docker/my-mvn-entrypoint.sh"]
