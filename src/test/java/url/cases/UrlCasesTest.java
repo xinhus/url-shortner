@@ -21,7 +21,8 @@ public class UrlCasesTest {
 	@Test
 	public void testUrlCase() {
 		String originalUrl = "https://www.mycustomurl.com/";
-		saveUrlAndAssertOriginalUrl(originalUrl);
+		UrlEntity entity = saveUrlAndAssertOriginalUrl(originalUrl);
+		Assert.assertEquals(originalUrl, entity.getOriginalUrl());
 	}
 
 	@Test
@@ -42,12 +43,18 @@ public class UrlCasesTest {
 		} catch (UrlNotFoundException e) {
 			Assert.fail("Url not found");
 		}
-	}	
+	}
+	
+	@Test
+	public void testUrl_trySaveWithoutHttp_shouldPrefixWithHttp() {
+		String originalUrlWithoutHttp = "www.mycustomurl.com/";
+		UrlEntity entity = saveUrlAndAssertOriginalUrl(originalUrlWithoutHttp);
+		Assert.assertEquals("http://www.mycustomurl.com/", entity.getOriginalUrl());
+	}
 	
 	private UrlEntity saveUrlAndAssertOriginalUrl(String originalUrl) {
 		try {
 			UrlEntity entity = cases.shortUrl(originalUrl);
-			Assert.assertEquals(originalUrl, entity.getOriginalUrl());
 			return entity;
 		} catch (UnableToSaveUrlException e) {
 			Assert.fail("Unable to save Url");

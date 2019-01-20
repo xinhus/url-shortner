@@ -20,7 +20,7 @@ public class UrlRepositoryUsingMysql implements UrlRepository {
 			        (Driver)Class.forName( "com.mysql.jdbc.Driver" ).newInstance()
 			);
 	        DriverManager.setLoginTimeout(10);
-	        return DriverManager.getConnection("jdbc:mysql://172.20.0.2:3306/url" , "root", "password");
+	        return DriverManager.getConnection("jdbc:mysql://localhost:3306/url" , "root", "password");
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
